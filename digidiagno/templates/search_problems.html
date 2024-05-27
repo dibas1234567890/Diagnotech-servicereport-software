@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %} Search Clients {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% endif %}
+
+
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Search By Id
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'view_problems_id' %}">
+                            {% csrf_token %}
+                        
+                                <input type="text" name="q" placeholder="Search by ID" value="{{ request.GET.q }}">
+                        
+                                <button type="submit">Search</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Search By Name
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'search_problems_name' %}"  method="get">
+                            {% csrf_token %}
+                    
+                            <input type="text" name="client" placeholder="Search by Client Name" value="{{ request.GET.client }}">
+                    
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2 class="h2"> Results:</h2>
+    <table class="table text-white">
+        <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Client</th>
+        <th>Machine</th>
+        <th>Engineer</th>
+        <th>Status</th>
+        </tr>
+
+    {% for i in problems %}
+        <tr >
+            <td> {{ i.name }}</td>
+            <td> {{ i.id }}</td>
+            <td> {{ i.client }}</td>
+            <td> {{ i.machine }}</td>
+            <td> {{ i.engineer }}</td>
+            <td> {{ i.status }}</td>
+
+    {% endfor %}
+
+    {% if no_results %}
+    <p>No results found.</p>
+    {% else %}
+        {% for i in problems_name %}
+            <tr>
+                <td> {{ i.name }}</td>
+                <td> {{ i.id }}</td>
+                <td> {{ i.client }}</td>
+                <td> {{ i.machine }}</td>
+                <td contenteditable='true'> {{ i.engineer }}</td>
+
+        {% endfor %}
+    {% endif %}
+        </tr>    
+    </table>
+    {% endblock %}
+            </div>
+        </div>
+    </div>
+    

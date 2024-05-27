@@ -1,0 +1,63 @@
+{%  extends 'base.html' %}
+
+{% block title %} 
+Results : {{ client_name }}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% include "header.html" %}
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="card text-center rounded-0 mt--2">
+            <div class="card-header text-black"> <h2 class="h2 text-black">Problems For {{ client_name }}</h2></div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                <table class="table ">
+                    <tr>
+                        <th>Id</th>
+                        <th>Machine</th>
+                        <th>Engineer</th>
+                        <th>Date</th>
+                        <th>Remarks</th>
+                        <th>Detailed Desc</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                    {% for i in problems_name %}
+                    
+                        <tr>
+                        <td name="id">{{ i.id }}</td>
+                            <td>{{ i.machine }}</td>
+                            <td>{{ i.engineer }}</td>
+                            <td>{{ i.date }}</td>
+                            <td>{{ i.remarks }}</td>
+                            <td>{{ i.detailed_desc }}</td>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.status }}</td>
+                            <td><a href="{% url 'edit_report' i.id %}"> Edit</a</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% else %}
+    
+<p>You are not logged in! Please login first</p>
+<a href="{% url 'login' %}"><button>
+    Go To Login
+</button></a>
+{% endif %}
+
+{% endblock %}

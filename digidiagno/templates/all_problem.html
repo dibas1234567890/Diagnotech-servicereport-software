@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{%  block title %} Problems List {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% endif %}
+
+
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-lg-12 col-sm-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    All Problems
+                </div>
+                <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        Client 
+                    </th>
+                    <th>
+                        Machine 
+                    </th>
+                    <th>
+                        Engineer 
+                    </th>
+                    <th>
+                        Date 
+                    </th>
+                    <th>
+                        Remarks 
+                    </th>
+                    <th>
+                        Detailed Desc 
+                    </th>
+                    <th>
+                        Name 
+                    </th>  
+                    <th>
+                        Status 
+                    </th>
+            
+                </tr>
+            
+            {%  for i in problems %}
+                <tr>
+                    <td>{{ i.client }}</td>
+                    <td>{{ i.machine }}</td>
+                    <td>{{ i.engineer }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.remarks }}</td>
+                    <td>{{ i.detailed_desc }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.status }}</td>
+                    
+                    
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

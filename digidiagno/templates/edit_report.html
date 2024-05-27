@@ -1,0 +1,54 @@
+{%  extends 'base.html' %}
+
+{% block title %} 
+Results : {{ client_name }}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% include "header.html" %}
+
+<div class="container">
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card text-center rounded-0  mt--2">
+            <div class="card-header text-black"> <h2 class="h2 text-black">Problems For {{ client_name }}</h2></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <form action="" method="post" class="">
+                        {% csrf_token %}
+                        {% for i in  form  %} 
+                        <div class="form-group">
+                            
+
+                                <label for=""class="form-label">{{ i.label }}</label>
+                                {{ i }}
+                            
+                                {% endfor %}
+                                
+                        </div>
+                        {% if button_required %}
+                        <button type="submit" class="btn btn-info text-white">Submit</button>
+                        {% endif %}
+                    </form>
+                
+                    
+                    {{ success }}
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% else %}
+    
+<p>You are not logged in! Please login first</p>
+<a href="{% url 'login' %}"><button>
+    Go To Login
+</button></a>
+{% endif %}
+
+{% endblock %}

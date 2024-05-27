@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Header</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        .nav-link {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+   {% if not user.profile.client %}
+   <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-info rounded-bottom justify-content-center " >
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'images\diagnotech_logo.png' %}" height="75px" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" >
+                    <span class="navbar-toggler-icon bg-white"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto"> <!-- Use mx-auto to center align the items -->
+                        <li class="nav-item">
+                            <a href="{% url 'add_client' %}" class="nav-link link-light bg-info shadow rounded">Add Clients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'add_machine' %}" class="nav-link link-light shadow rounded">Add Machine</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'view_clients' %}" class="nav-link link-light shadow rounded">View Clients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'view_machine' %}" class="nav-link link-light shadow rounded">View Machine</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'problem' %}" class="nav-link link-light shadow rounded">Report a Machine Issue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'view_all_problems' %}" class="nav-link link-light shadow rounded">View All Problems</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'view_problems_id' %}" class="nav-link link-light shadow rounded">Search Reports </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+{% endif %}
+</body>
+</html>

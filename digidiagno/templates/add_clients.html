@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+    Add Clients
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+{% include "header.html" %}
+
+    <div class="mt-2 container col-lg-12 col-md-8 col-xs-8 justify-content-center ">
+        <div class="row justify-content-center">
+        <div class="col-lg-3 col-xs-12 ">
+            <div class="card col-12 text-center ">
+                <div class="card-header"> Add Client</div>
+
+                <div class="card-body">
+                    
+                <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                {{ form }}
+                </div>
+                </div>
+                </div>
+                <div class="mt-2 d-flex justify-content-center"> 
+                <button class="btn btn-primary " type="submit">Submit</button>
+                </div>
+        </div>
+            
+        </div>
+            
+            
+        </form>
+        </div>
+    </div>
+         
+
+{% else %}
+    
+    <p>You are not logged in! Please login first</p>
+    
+{% endif %}
+{% endblock %}

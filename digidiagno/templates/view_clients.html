@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}
+    Diagnotech Client List
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% else %}
+    
+<p>You are not logged in! Please login first</p>
+<a href="{% url 'login' %}"><button>
+    Go To Login
+</button></a>
+{% endif %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card text-center rounded-0 ">
+                <div class="card-header text-black"> <h2 class="h2 text-black">Client List</h2></div>
+                <div class="card-body table-responsive">
+            <table class="table text-black">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+        
+                </tr>
+                {% for x in clients  %}
+               
+                    
+                        <tr>
+                        <td><a href="{% url 'view_problems_name' client_name=x.client_name %}" class="link-info">{{ x.client_name }}</a></td>
+                        <td>{{ x.client_address }}</td>
+                        <td>{{ x.client_contact }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>   
+                    </div>
+                    </div>
+                    </div>
+        </div>
+    </div>
+</div>
+      
+    
+    
+      
+      
+    {% endblock %}
+  
+
+

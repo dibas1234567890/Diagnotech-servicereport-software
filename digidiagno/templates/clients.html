@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+    Diagnotech Client List
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+ 
+
+
+    <table class="table">
+
+        {% for x in clients_by_id  %}
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+
+        </tr>
+            
+                <tr>
+                <a href="#" class="link-info"><td>{{ x.client_name }}</td></a>
+                <td>{{ x.client_address }}</td>
+                <td>{{ x.client_contact }}</td>
+                </tr>
+       
+                     
+        {% endfor %}
+    </table>
+    <table>
+
+        {% for x in clients_by_name  %}
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact</th>
+
+            </tr>
+                <tr>
+                <td>{{ x.client_name }}</td>
+                <td>{{ x.client_address }}</td>
+                <td>{{ x.client_contact }}</td>
+                </tr>
+       
+                     
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    Welcome
+    {% endblock %}
+
+</head>
+<body >
+    
+
+    {% block content %}
+    {% if not user.profile.client %}
+    {% if user.is_authenticated %}
+    
+    {% include "header.html" %}
+    <div class="container mask rounded-bottom border bg-info justify-content-center col-8">
+        <div class="row">
+            <div class="col-12  justify-content-center">
+                <h1 class="h1 text-center">Welcome {{ user }}</h1>
+            </div>
+            <div class="col-12"><h2 class="h2 text-center">What Do You Want To Do?</h2></div>
+        </div>
+    </div>
+ 
+
+    {% else %}
+    <p>You are not logged in! Please login first</p>
+    <a href="{% url 'login' %}"><button>
+        Go To Login
+    </button></a>
+    
+    
+   
+    {% endif %}
+
+    {% else %}
+    <p class="h3">Clients are only allowed to report problems ! Please go here</p>
+    <a href="{% url 'problem' %}"><button>
+        Go To Client Page 
+    </button></a>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

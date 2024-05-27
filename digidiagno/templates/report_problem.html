@@ -1,0 +1,158 @@
+
+{% extends 'base.html' %}
+
+
+
+{% block title %} Report Problem
+{% endblock %}
+{% block client_content %}
+<div class="container col-lg-12">
+    <div class="row justify-content-center">
+        <div class="">
+            <div class="card text-center rounded-0 ">
+                <div class="card-header text-black"> <h2 class="h2 text-black">Report A Problem</h2></div>
+                <div class="card-body form-group ">
+    
+    <form action="" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% with i=form %}
+        <div class="mb-3">
+            {{ i.client.label }}:
+            {{ i.client }}
+        </div> 
+        <div class="mb-3">
+            {{ i.machine.label }}:
+            {{ i.machine }}
+        </div> 
+        <div class="mb-3">
+            {{ i.engineer.label }}:
+            {{ i.engineer }}
+        </div> 
+       
+        <div class="mb-3">
+            {{ i.remarks.label }}:
+            {{ i.remarks }}
+        </div> 
+       
+        <div class="mb-3">
+            {{ i.detailed_desc.label }}:
+
+            {{ i.detailed_desc }}
+        </div> 
+        <div class="mb-3">
+            {{ i.name.label }}:
+
+            {{ i.name }}
+        </div> 
+        <div class="mb-3">
+            {{ i.status.label }}:
+
+            {{ i.status }}
+        </div> 
+        <div class="mb-3">
+            {{ i.image.label }}:
+
+            {{ i.image }}
+        </div>
+        <button type="submit" class="btn text-white bg-info">Report</button>
+        {% endwith %}
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% include "header.html" %}
+{% else %}
+<p>You are not logged in! Please login first</p>
+<a href="{% url 'login' %}"><button>
+    Go To Login
+</button></a>
+{% endif %}
+<div class="container col-lg-12">
+    <div class="row justify-content-center">
+        <div class="">
+            <div class="card text-center rounded-0 ">
+                <div class="card-header text-black"> <h2 class="h2 text-black">Report A Problem</h2></div>
+                <div class="card-body form-group ">
+    
+    <form action="" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% with i=form %}
+        <div class="mb-3">
+            {{ i.client.label }}:
+            {{ i.client }}
+        </div> 
+        <div class="mb-3">
+            {{ i.machine.label }}:
+            {{ i.machine }}
+        </div> 
+        <div class="mb-3">
+            {{ i.engineer.label }}:
+            {{ i.engineer }}
+        </div> 
+       
+        <div class="mb-3">
+            {{ i.remarks.label }}:
+            {{ i.remarks }}
+        </div> 
+       
+        <div class="mb-3">
+            {{ i.detailed_desc.label }}:
+
+            {{ i.detailed_desc }}
+        </div> 
+        <div class="mb-3">
+            {{ i.name.label }}:
+
+            {{ i.name }}
+        </div> 
+        <div class="mb-3">
+            {{ i.status.label }}:
+
+            {{ i.status }}
+        </div> 
+        <div class="mb-3">
+            {{ i.image.label }}:
+
+            {{ i.image }}
+        </div>
+        <button type="submit" class="btn text-white bg-info">Report</button>
+        {% endwith %}
+    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <!--<table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Machine</th>
+            <th>Engineer</th>
+            <th>Remarks</th>
+        </tr>
+      {% for x in problems %}
+            <tr>
+            <td>
+                <a href="">
+                    {{ x.name }}
+                </a>
+            </td>
+            <td>{{ x.date }}</td>
+            <td><a href="{% url 'client_by_id' client_id=x.client.id  %}">{{ x.client }}</a></td>
+            <td>{{ x.machine }}</td>
+            <td>{{ x.engineer }}</td>
+            <td>{{ x.remarks }}</td>
+            </tr>
+       
+                 
+        {% endfor %}
+        
+        </table> -->
+{% endblock %}

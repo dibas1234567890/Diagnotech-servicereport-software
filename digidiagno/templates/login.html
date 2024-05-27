@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block title %}Login {% endblock %}
+{% block content %}
+<div class="container h-100 my-5">
+    <div class="row h-100 align-items-center justify-content-center" >
+        <form action="" method="post" class="col-6">
+            <div class="card text-center">
+                <img src="{% static 'images\diagnotech_logo.png' %}" class="mx-auto" height="200px"  alt="">
+                <div class="card-header">Login
+                </div>
+                <div class="card-body">
+        <div class="form-group">
+            {% csrf_token %}
+                {% for fields in form %}
+                    <div class="control-group">
+                        <div class="control-label">{{ fields.label }}</div>
+                            {{ fields }}
+        
+                    </div>
+          
+                    {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-info mt-2">Login</button>
+        </form>
+    </div>
+</div>
+{%  endblock %}
+
+{% block client_content %}
+<div class="container h-100 my-5">
+    <div class="row h-100 align-items-center justify-content-center" >
+        <form action="" method="post" class="col-6">
+            <div class="card text-center">
+                <img src="{% static 'images\diagnotech_logo.png' %}" class="mx-auto" height="200px"  alt="">
+                <div class="card-header">Login
+                </div>
+                <div class="card-body">
+        <div class="form-group">
+            {% csrf_token %}
+                {% for fields in form %}
+                    <div class="control-group">
+                        <div class="control-label">{{ fields.label }}</div>
+                            {{ fields }}
+        
+                    </div>
+          
+                    {% endfor %}
+        </div>
+        </div>
+        </div>
+        
+        <button type="submit" class="btn btn-info mt-2">Login</button>
+        </form>
+    </div>
+    </div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} base {% endblock %}</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load custom_tags %}
+    
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'images\diagnotech_logo.png' %}" >
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+
+
+<body>
+    <div class="container">
+        {% block client_check %}
+        {% if user.profile.client %}        
+            {% if  request.path == "/problem-added/"  or request.path == "/login/" %}
+          
+            {% block client_content %}
+       
+            {% endblock %}
+           
+            {% elif request.path != "/problem-added/" or  request.path != "/login/" %}
+            <p class="h3">Clients are only allowed to report problems ! Please go here</p>
+            <a href="{% url 'problem' %}"><button>
+            Go To Client Page  
+            </button></a>
+            {% endif %}
+        {% else %}
+       
+        
+        {% block content %}
+       
+        {% endblock %}
+    
+    
+        {% endif %}
+        {% endblock %}
+        
+        
+        
+    </div>
+</body>
+</html>
