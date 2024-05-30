@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views import View
+from digidiagno.views.table_export import table_exporter
 from digidiagno.views.clientview import ClientView
 from digidiagno.views.index import Index
 from digidiagno.views.login import Login
@@ -53,6 +54,11 @@ urlpatterns = [
     path('search-problem-by-client-name/', ProblemView.view_problems_by_name_url, name='search_problems_name'),
 
     path('edit-report/<int:id>', ProblemView.edit_report, name='edit_report'),
+    path('client_export', table_exporter.table_export_clients_all, name='test_url'),
+    path('machine_export', table_exporter.export_all_machines, name='export_all_machines'),
+    path('problem_export', table_exporter.export_all_problems, name='export_all_problem'),
+    path('problem_by_machine_model/<str:machine_model>', ProblemView.problem_by_machine_model, name='problem_by_machine_model'),
+
     
     
 

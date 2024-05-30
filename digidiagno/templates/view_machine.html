@@ -27,7 +27,8 @@
                                     
                                         <th>Serial Number</th>
 
-                                        <th>Client</th>
+                                        <th>Client</th>  
+                                        <th>Model</th>
                                     </tr>
                             
                                 {% for x in machine %}
@@ -39,6 +40,9 @@
                                         </td>
                                         <td>{{ x.machine_serial_number}}</td>
                                         <td>{{ x.client}}</td>
+                                        <td> <a href="{% url 'problem_by_machine_model' x.model%}">
+                                            {{ x.model }}
+                                        </a></td>
                                         </tr>
                                 
                     
@@ -49,6 +53,39 @@
         </div>
         </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex mt-2 .justify-content-end">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                            <li class="page-item"><a href="?page=1" class="page-link">&laquo; first</a></li>
+                            <li class="page-item">
+                            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">previous</a></li>
+                            {% endif %}
+                          <li class="page-item"><a class="page-link" href="#">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </a></li>
+                        {% if page_obj.has_next %}
+                          <li class="page-item">
+                            
+                            <a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">last &raquo;</a>
+                        {% endif %}
+                          </li>
+                        </ul>
+                      </nav>
+                
+                <a href="{%  url 'export_all_machines' %}" mx-auto><button class="btn btn-info mx-auto text-white h-auto" >
+                    Download All Machines
+                  </button></a></div>
+            </div>
         </div>
+        </div>
+
+       
+        
         
         {% endblock %}

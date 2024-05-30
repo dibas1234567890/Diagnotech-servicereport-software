@@ -4,6 +4,9 @@ class ClientModel(models.Model):
     client_name = models.CharField( max_length=50)
     client_address = models.CharField( max_length=50)
     client_contact = models.CharField( max_length=50)
+
+    class Meta:
+            ordering = ['-id']
     
     def __str__(self):
                 return self.client_name

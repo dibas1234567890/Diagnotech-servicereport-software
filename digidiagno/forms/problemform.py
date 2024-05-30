@@ -19,7 +19,7 @@ class ProblemForm(forms.ModelForm):
         super(ProblemForm,self).__init__(*args, **kwargs)
         print('init called')
         print(f'{user}')
-        print(hasattr(user, 'profile'))
+        print('Is Client:',hasattr(user, 'profile'))
         #print(ClientModel.objects.filter(client_name=user.profile.client))
         if user and hasattr(user, 'profile'):
             print('inside if statement')

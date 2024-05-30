@@ -3,19 +3,26 @@ from django.shortcuts import redirect, render, get_object_or_404, HttpResponse
 from digidiagno.models.machinemodel import MachineModel
 from digidiagno.forms.machine_add_form import MachineAddForm
 from django.contrib.auth.decorators import *
+from django.core.paginator import Paginator
+
 
 @login_required 
 class MachineView(View):
     @login_required
     def view_machine(request):
        machine =  MachineModel.objects.all()
-       return render(request, 'view_machine.html', {'machine':machine}) 
+       paginator = Paginator(machine,25)
+       page_number = request.GET.get('page')
+       page_obj = paginator.get_page(page_number)
+       return render(request, 'view_machine.html', {'machine':page_obj, 'page_obj':page_obj}) 
     
     @login_required
     def view_machine_by_id(request, machine_id):
-       machine_by_id =  MachineModel.objects.filter(pk = int(machine_id))
-       
-       return render(request, 'machines.html', {'machine_by_id':machine_by_id})
+       list_machines =  MachineModel.objects.filter(pk = int(machine_id))
+       paginator = Paginator(list_machines,2)
+       page_number = request.GET.get('page')
+       page_obj = paginator.get_page(page_number)
+       return render(request, 'view_machine.html', {'machine':page_obj, 'page_obj':page_obj}) 
     
     @login_required
     def add_machines(request):
@@ -43,3 +50,5 @@ class MachineView(View):
           else: 
              form  = MachineAddForm(instance=client)
        return render(request, 'machines.html', {'form':form})
+    
+   

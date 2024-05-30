@@ -9,13 +9,18 @@ from django.contrib.auth.decorators import *
 
 from digidiagno.models.machinemodel import MachineModel
 
+from django.core.paginator import Paginator
+
 @login_required
 @group_required('admin')
 class ClientView(View):
     @login_required
     def view_clients(request):
        clients =  ClientModel.objects.all()
-       return render(request, 'view_clients.html', {'clients':clients}) 
+       paginator = Paginator(clients,2)
+       page_number = request.GET.get('page')
+       page_obj = paginator.get_page(page_number)
+       return render(request, 'view_clients.html', {'clients':page_obj, 'page_obj':page_obj}) 
     
     @login_required
     def view_clients_by_id(request, client_id):
