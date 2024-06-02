@@ -26,6 +26,8 @@
                     <th>Name</th>
                     <th>Address</th>
                     <th>Contact</th>
+                    <th>Warranty amc status:</th>
+                    <th>Install location: </th>
         
                 </tr>
                 {% for x in clients  %}
@@ -35,6 +37,8 @@
                         <td><a href="{% url 'view_problems_name' client_name=x.client_name %}" class="link-info">{{ x.client_name }}</a></td>
                         <td>{{ x.client_address }}</td>
                         <td>{{ x.client_contact }}</td>
+                        <td>{{ x.warranty_amc_status }}</td>
+                        <td>{{ x.install_location }}</td>
                         </tr>
                         {% endfor %}
                     </table>   

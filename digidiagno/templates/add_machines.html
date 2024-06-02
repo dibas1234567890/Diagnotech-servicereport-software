@@ -16,29 +16,8 @@
                 
             <form class="form-inline" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="mb-3">
-            {{ form.machine_name.label }}:
-            {{ form.machine_name }}
-            </div>
-            <div class="mb-3">
-                {{ form.machine_serial_number.label }}:
-                {{ form.machine_serial_number }}
-                </div>
-                <div class="mt-2">
-                    {{ form.client.label }}:
-                </div>
-                <div class="mt-2">
-                    {{ form.client }}
-                </div> 
-                <div class="mt-2">
-                    {{ form.model.label }}
-                </div>
-                <div class="mt-2">
-                    
-                    {{ form.model }}
-                </div>
-            
-
+                {{ form.as_p }}
+                
             </div>
             </div>
             <div class="mt-2 d-flex justify-content-center"> 

@@ -24,7 +24,8 @@ class MachineModel(models.Model):
         machine_serial_number = models.CharField(max_length=50, unique=True)
         client = models.ForeignKey(ClientModel, null=True, blank=True, related_name='machine', on_delete=models.CASCADE)
         model = models.CharField(max_length=100, choices=status_choices, default='Processing')
-        
+        install_location = models.CharField(max_length=50, null=True, blank=True)
+
         class Meta:
             ordering = ['-id']
 

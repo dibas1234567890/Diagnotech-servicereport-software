@@ -19,7 +19,11 @@ class ProblemModel(models.Model):
         name = models.CharField(max_length=50)
         status = models.CharField(max_length=100, choices=status_choices, default='Processing')
         image = models.ImageField(upload_to='static/media/img/report_uploads', height_field=None, null=True, blank=True, width_field=None, max_length=None)
-        
+        system_down = models.BooleanField(null=True, blank=True)
+        problem_area = models.CharField(max_length=2048, blank=True, null =True)
+
+
+
         class Meta:
             ordering = ['-id']
         

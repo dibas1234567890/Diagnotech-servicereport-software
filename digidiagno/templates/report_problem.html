@@ -30,12 +30,12 @@
         </div> 
        
         <div class="mb-3">
-            {{ i.remarks.label }}:
-            {{ i.remarks }}
+        Problem Reported
+        {{ i.remarks }}
         </div> 
        
         <div class="mb-3">
-            {{ i.detailed_desc.label }}:
+            Service Rendered:
 
             {{ i.detailed_desc }}
         </div> 
@@ -80,49 +80,10 @@
                 <div class="card-body form-group ">
     
     <form action="" method="post" class="form" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% with i=form %}
-        <div class="mb-3">
-            {{ i.client.label }}:
-            {{ i.client }}
-        </div> 
-        <div class="mb-3">
-            {{ i.machine.label }}:
-            {{ i.machine }}
-        </div> 
-        <div class="mb-3">
-            {{ i.engineer.label }}:
-            {{ i.engineer }}
-        </div> 
-       
-        <div class="mb-3">
-            Service Rendered:
-            {{ i.remarks }}
-        </div> 
-       
-        <div class="mb-3">
-            {{ i.detailed_desc.label }}:
+                        {{ form.as_p }}
+                        <button type="submit" class="btn text-white bg-info">Report</button>
 
-            {{ i.detailed_desc }}
-        </div> 
-        <div class="mb-3">
-            {{ i.name.label }}:
-
-            {{ i.name }}
-        </div> 
-        <div class="mb-3">
-            {{ i.status.label }}:
-
-            {{ i.status }}
-        </div> 
-        <div class="mb-3">
-            {{ i.image.label }}:
-
-            {{ i.image }}
-        </div>
-        <button type="submit" class="btn text-white bg-info">Report</button>
-        {% endwith %}
-    </form>
+   </form>
 </div>
 </div>
 </div>
