@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 django-bootstrap-v5 = "*"
+pymupdf = "*"
+fillpdf = "*"
 
 [dev-packages]
 

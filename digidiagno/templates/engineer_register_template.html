@@ -1,0 +1,87 @@
+
+{% extends 'base.html' %}
+
+
+
+{% block title %} Report Problem
+{% endblock %}
+
+
+{% block client_content %}
+<div class="container col-lg-12">
+    <div class="row justify-content-center">
+        <div class="">
+            <div class="card text-center rounded-0 ">
+                <div class="card-header text-black"> <h2 class="h2 text-black">Report A Problem</h2></div>
+                <div class="card-body form-group ">
+    
+    
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="container col-lg-12">
+    <div class="row justify-content-center">
+        <div class="">
+            <div class="card text-center rounded-0 ">
+                <div class="card-header text-black"> <h2 class="h2 text-black">Register User</h2></div>
+                <div class="card-body form-group ">
+    
+    <form action="" method="post" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+                    {% for field in form %}
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    {{ field.label }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                           
+                        </table>
+                        <button type="submit" class="btn text-white bg-info">Sumbit</button>
+
+   </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <!--<table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Machine</th>
+            <th>Engineer</th>
+            <th>Remarks</th>
+        </tr>
+      {% for x in problems %}
+            <tr>
+            <td>
+                <a href="">
+                    {{ x.name }}
+                </a>
+            </td>
+            <td>{{ x.date }}</td>
+            <td><a href="{% url 'client_by_id' client_id=x.client.id  %}">{{ x.client }}</a></td>
+            <td>{{ x.machine }}</td>
+            <td>{{ x.engineer }}</td>
+            <td>{{ x.remarks }}</td>
+            </tr>
+       
+                 
+        {% endfor %}
+        
+        </table> -->
+{% endblock %}

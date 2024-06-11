@@ -46,7 +46,7 @@ class table_exporter(View):
         for problem in problem_set:
             writer.writerow([problem.id, problem.client, problem.machine, 
                         problem.engineer, problem.date, problem.remarks, 
-                        problem.detailed_desc, problem.name,problem.status,
+                        problem.service_rendered, problem.name,problem.status,
                         problem.image])
         return response
 

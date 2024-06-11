@@ -159,3 +159,5 @@ import logging
 
 
 '''
+AUTH_PROFILE_MODULE = "digidiagno.EngineerProfile"
+

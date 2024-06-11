@@ -29,7 +29,7 @@ class ProblemView(View):
                 if profile.client is not None:
                     problem_instance.client = profile.client
             except ObjectDoesNotExist:
-                # No profile or client found, continue without setting client
+                # client bhetena
                 pass
             
             return render(request, 'success_page.html', {'problem_added_success':msg})

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views import View
+from digidiagno.views import pdfExport
 from digidiagno.views.table_export import table_exporter
 from digidiagno.views.clientview import ClientView
 from digidiagno.views.index import Index
@@ -58,6 +59,9 @@ urlpatterns = [
     path('machine_export', table_exporter.export_all_machines, name='export_all_machines'),
     path('problem_export', table_exporter.export_all_problems, name='export_all_problem'),
     path('problem_by_machine_model/<str:machine_model>', ProblemView.problem_by_machine_model, name='problem_by_machine_model'),
+    path('pdfexport/<int:id>', pdfExport.exporter, name='pdfexport'),
+    path('register_engineer/', Index.EngineerRegisterView, name = 'register_engineer'),
+
 
     
     

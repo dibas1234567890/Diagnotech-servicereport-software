@@ -11,7 +11,7 @@ class ProblemForm(forms.ModelForm):
 
     class Meta:
         model = ProblemModel
-        fields = ['client', 'machine', 'engineer', 'remarks', 'detailed_desc', 'name', 'status', 'image', 'problem_area', 'system_down']
+        fields = ['client', 'machine', 'engineer', 'remarks', 'service_rendered', 'name', 'status', 'image', 'defects', 'system_down']
 
         
     def __init__(self,  *args, **kwargs):
