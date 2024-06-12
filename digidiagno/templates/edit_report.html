@@ -8,6 +8,7 @@ Results : {{ client_name }}
 
 {% if user.is_authenticated %}
 {% include "header.html" %}
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>    
 
 <div class="container">
 <div class="row justify-content-center">
@@ -16,6 +17,7 @@ Results : {{ client_name }}
             <div class="card-header text-black"> <h2 class="h2 text-black">Problems For {{ client_name }}</h2></div>
             <div class="card-body">
                 <div class="table-responsive">
+                    {{ form.media }}
                     <form action="" method="post" class="">
                         {% csrf_token %}
                         {% for i in  form  %} 
