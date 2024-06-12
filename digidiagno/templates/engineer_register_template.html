@@ -30,8 +30,11 @@
             <div class="card text-center rounded-0 ">
                 <div class="card-header text-black"> <h2 class="h2 text-black">Register User</h2></div>
                 <div class="card-body form-group ">
-    
+                    <div class="card">
+                        {{ form.media }} 
+                    </div>
     <form action="" method="post" class="form" enctype="multipart/form-data">
+    
         {% csrf_token %}
                     {% for field in form %}
                         <table class="table">

@@ -6,6 +6,8 @@
 {% block title %} Report Problem
 {% endblock %}
 {% block client_content %}
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>    
+
 <div class="container col-lg-12">
     <div class="row justify-content-center">
         <div class="">
@@ -13,50 +15,7 @@
                 <div class="card-header text-black"> <h2 class="h2 text-black">Report A Problem</h2></div>
                 <div class="card-body form-group ">
     
-    <form action="" method="post" class="form" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% with i=form %}
-        <div class="mb-3">
-            {{ i.client.label }}:
-            {{ i.client }}
-        </div> 
-        <div class="mb-3">
-            {{ i.machine.label }}:
-            {{ i.machine }}
-        </div> 
-        <div class="mb-3">
-            {{ i.engineer.label }}:
-            {{ i.engineer }}
-        </div> 
-       
-        <div class="mb-3">
-        Problem Reported
-        {{ i.remarks }}
-        </div> 
-       
-        <div class="mb-3">
-            Service Rendered:
-
-            {{ i.detailed_desc }}
-        </div> 
-        <div class="mb-3">
-            {{ i.name.label }}:
-
-            {{ i.name }}
-        </div> 
-        <div class="mb-3">
-            {{ i.status.label }}:
-
-            {{ i.status }}
-        </div> 
-        <div class="mb-3">
-            {{ i.image.label }}:
-
-            {{ i.image }}
-        </div>
-        <button type="submit" class="btn text-white bg-info">Report</button>
-        {% endwith %}
-    </form>
+    
 </div>
 </div>
 </div>
@@ -77,6 +36,9 @@
         <div class="">
             <div class="card text-center rounded-0 ">
                 <div class="card-header text-black"> <h2 class="h2 text-black">Report A Problem</h2></div>
+                <div class="card">
+                    {{ form.media }} 
+                </div>
                 <div class="card-body form-group ">
     
     <form action="" method="post" class="form" enctype="multipart/form-data">

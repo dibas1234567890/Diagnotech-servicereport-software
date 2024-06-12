@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from digidiagno.models.clientmodel import ClientModel
 from digidiagno.models.machinemodel import MachineModel
+from jsignature.fields import JSignatureField
+from jsignature.widgets import JSignatureWidget
 
 status_choices= (('Resolved','Resolved'),
                   ('Ongoing','Ongoing'), 
@@ -14,7 +16,7 @@ class ProblemModel(models.Model):
         
         engineer = models.ForeignKey(User, on_delete=models.CASCADE)
         date = models.DateTimeField(auto_now=True)
-        end_date = models.DateField(blank=True, null=True)
+        end_date = models.DateField(blank=True, null=True, )
         remarks = models.CharField(max_length=1024)
         service_rendered = models.CharField(max_length=2048)
         name = models.CharField(max_length=50)
@@ -25,6 +27,8 @@ class ProblemModel(models.Model):
         defects = models.CharField(max_length=2048, blank=True, null =True)
         location_of_problem = models.CharField(max_length=2048, blank=True, null =True)
         status_after_service = models.CharField(max_length=2048, blank=True, null =True)
+        client_signature = JSignatureField(null=True)
+
 
 
 

@@ -8,6 +8,7 @@ django = "*"
 django-bootstrap-v5 = "*"
 pymupdf = "*"
 fillpdf = "*"
+pandas = "*"
 
 [dev-packages]
 

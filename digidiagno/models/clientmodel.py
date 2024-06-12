@@ -1,4 +1,8 @@
 from django.db import models
+from jsignature.fields import JSignatureField
+from jsignature.widgets import JSignatureWidget
+
+
 choice = (('No', 'No'), ('Yes' , 'Yes' ))
 class ClientModel(models.Model):
     client_name = models.CharField( max_length=50)
@@ -7,7 +11,7 @@ class ClientModel(models.Model):
     contact_number = models.CharField(max_length=50, blank=True, null=True)
     contact_email = models.CharField(max_length=50, blank=True, null=True)
     warranty_amc_status = models.CharField(max_length=50, choices=choice, blank=True, null=True)
-    signature = models.ImageField(blank=True, null=True)
+    #signature = JSignatureField() moved to problem model as signatures required when exporting PDF and may vary from time to time for the same client 
 
     class Meta:
             ordering = ['-id']

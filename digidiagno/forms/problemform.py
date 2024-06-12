@@ -6,12 +6,18 @@ from digidiagno.models.clientmodel import ClientModel
 from digidiagno.models.machinemodel import MachineModel
 from digidiagno.models.problemmodel import ProblemModel
 from digidiagno.models.profile import Profile as profile
+from jsignature.forms import JSignatureField
+from jsignature.widgets import JSignatureWidget
 
 class ProblemForm(forms.ModelForm):
+    client_signature = JSignatureField(widget=JSignatureWidget(jsignature_attrs={'color': 'black', 'border':'solid', 'ResetButton':'green'}))
 
+    end_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}), required=False)
     class Meta:
         model = ProblemModel
-        fields = ['client', 'machine', 'engineer', 'remarks', 'service_rendered', 'name', 'status', 'image', 'defects', 'system_down']
+        fields = ['client',  'machine', 'engineer', 'end_date','remarks', 'status_after_service', 
+                  'location_of_problem', 'service_rendered', 
+                  'name', 'status', 'image', 'defects', 'system_down', 'client_signature']
 
         
     def __init__(self,  *args, **kwargs):

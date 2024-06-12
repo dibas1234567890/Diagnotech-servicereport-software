@@ -1,5 +1,5 @@
 body{
-    background-color: violet !important;
+    background-color: #489755 !important;
 }
 
 .nav-link {
@@ -20,4 +20,14 @@ table{
 .custom-toggler {
     border-color: #007bff; /* Change to your desired color */
     color: #007bff; /* Change to your desired color */
+  }
+
+  div#jsign_client_signature{
+    border: solid 1px;
+    border-color: #007bff;
+  }
+
+  .jSignature{
+    border: solid 1px;
+    border-color: #007bff;
   }

@@ -1,4 +1,7 @@
+
 {% extends "base.html" %}
+{% load jsignature_filters %}
+
 {% block title %}
     Diagnotech Client List
 {% endblock %}
@@ -27,7 +30,8 @@
                     <th>Address</th>
                     <th>Contact</th>
                     <th>Warranty amc status:</th>
-                    <th>Install location: </th>
+                    <th>Signature</th>
+                   
         
                 </tr>
                 {% for x in clients  %}
@@ -38,7 +42,7 @@
                         <td>{{ x.client_address }}</td>
                         <td>{{ x.client_contact }}</td>
                         <td>{{ x.warranty_amc_status }}</td>
-                        <td>{{ x.install_location }}</td>
+                        <td> <img src="{{ x.signature|signature_base64  }}" alt="{{ x }}"/></td>
                         </tr>
                         {% endfor %}
                     </table>   
