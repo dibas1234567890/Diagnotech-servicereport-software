@@ -11,3 +11,6 @@ class EngineerProfile(models.Model):
     phone_number = models.CharField(max_length=50, blank=True)
     is_engineer = models.BooleanField(default=True)
     signature = JSignatureField(null=True)
+
+    def __str__(self):
+        return self.userprofile.username
