@@ -13,3 +13,16 @@ def check_client(context):
         Go To Client Page 
         </button></a>""".format(reverse('problem'))
     return ''
+
+
+from django import template
+import base64
+
+register = template.Library()
+
+@register.filter
+def signature_base64_filter(signature):
+    if signature:
+        return f"data:image/png;base64,{base64.b64encode(signature).decode('utf-8')}"
+    else:
+        return ""

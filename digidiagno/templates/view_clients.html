@@ -1,6 +1,5 @@
 
 {% extends "base.html" %}
-{% load jsignature_filters %}
 
 {% block title %}
     Diagnotech Client List
@@ -9,7 +8,8 @@
 {% if user.is_authenticated %}
 {% include "header.html" %}
 {% else %}
-    
+{% load jsignature_filters %}
+{% load custom_tags %}
 <p>You are not logged in! Please login first</p>
 <a href="{% url 'login' %}"><button>
     Go To Login
@@ -42,7 +42,7 @@
                         <td>{{ x.client_address }}</td>
                         <td>{{ x.client_contact }}</td>
                         <td>{{ x.warranty_amc_status }}</td>
-                        <td> <img src="{{ x.signature|signature_base64  }}" alt="{{ x }}"/></td>
+                        <td> <img src="{{ x.signature }}" alt="{{ x }}"/></td>
                         </tr>
                         {% endfor %}
                     </table>   

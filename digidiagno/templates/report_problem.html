@@ -6,7 +6,7 @@
 {% block title %} Report Problem
 {% endblock %}
 {% block client_content %}
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>    
+
 
 <div class="container col-lg-12">
     <div class="row justify-content-center">
@@ -26,6 +26,8 @@
 {% if user.is_authenticated %}
 {% include "header.html" %}
 {% else %}
+
+
 <p>You are not logged in! Please login first</p>
 <a href="{% url 'login' %}"><button>
     Go To Login
@@ -81,28 +83,27 @@
         
         </table> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#id_client').change(function() {
-        var clientId = $(this).val();
-        $.ajax({
-            url: '/get-machine/', 
-            data: {
-                'client_id': clientId
-            },
-            dataType: 'json',
-            success: function(data) {
-                var machineSelect = $('#id_machine');
-                machineSelect.empty();
-                $.each(data.options, function(index, machine) {
-                    machineSelect.append($('<option></option>').attr('value', machine.id).text(machine.name));
-                    console.log(machine.id, machine.name, "debug");
+        <script>
+            $(document).ready(function() {
+                $('#id_client').change(function() {
+                    var clientId = $(this).val();
+                    $.ajax({
+                        url: '/get-machine/', 
+                        data: {
+                            'client_id': clientId
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            var machineSelect = $('#id_machine');
+                            machineSelect.empty();
+                            $.each(data.options, function(index, machine) {
+                                machineSelect.append($('<option></option>').attr('value', machine.id).text(machine.name));
+                                console.log(machine.id, machine.name, "debug");
+                            });
+                        }
+                    });
                 });
-            }
-        });
-    });
-});
-</script>
+            });
+            </script>
 
 {% endblock %}
