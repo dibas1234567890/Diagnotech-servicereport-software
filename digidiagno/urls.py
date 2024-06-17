@@ -61,6 +61,7 @@ urlpatterns = [
     path('problem_by_machine_model/<str:machine_model>', ProblemView.problem_by_machine_model, name='problem_by_machine_model'),
     path('pdfexport/<int:id>', pdfExport.exporter, name='pdfexport'),
     path('register_engineer/', Index.EngineerRegisterView, name = 'register_engineer'),
+    path('get-machine/', MachineView.machine_get, name = 'machine_returner'),
 
 
     

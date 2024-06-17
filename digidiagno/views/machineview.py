@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.views import View 
 from django.shortcuts import redirect, render, get_object_or_404, HttpResponse
 from digidiagno.models.machinemodel import MachineModel
@@ -50,5 +51,21 @@ class MachineView(View):
           else: 
              form  = MachineAddForm(instance=client)
        return render(request, 'machines.html', {'form':form})
+  
+  
+
+
+    def machine_get(request):
+      client_id = request.GET.get('client_id')
+      print(client_id, "client id is ")
+      machines = MachineModel.objects.filter(client_id=client_id)
+      options = [{'id':machine.id, 'name': machine.machine_name} for machine in machines]
+      return JsonResponse({'options': options})
+
+
+
+   
+     
+      
     
    

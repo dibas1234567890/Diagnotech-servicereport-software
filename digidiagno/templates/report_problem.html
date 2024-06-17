@@ -80,4 +80,29 @@
         {% endfor %}
         
         </table> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#id_client').change(function() {
+        var clientId = $(this).val();
+        $.ajax({
+            url: '/get-machine/', 
+            data: {
+                'client_id': clientId
+            },
+            dataType: 'json',
+            success: function(data) {
+                var machineSelect = $('#id_machine');
+                machineSelect.empty();
+                $.each(data.options, function(index, machine) {
+                    machineSelect.append($('<option></option>').attr('value', machine.id).text(machine.name));
+                    console.log(machine.id, machine.name, "debug");
+                });
+            }
+        });
+    });
+});
+</script>
+
 {% endblock %}
