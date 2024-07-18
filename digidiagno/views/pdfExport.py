@@ -31,13 +31,12 @@ class pdfExport(View):
         form_fields = list(fillpdfs.get_form_fields(path))
         client_export = ProblemModel.objects.get(pk=id)
         print("id is", client_export.engineer.id)
-
+        
         signature_for_pdf = client_export.client_signature
         test = EngineerProfile.objects.get(userprofile_id = 2)
         print(test.id)
         try:
-            global engineer_for_pdf 
-            engineer_for_pdf = EngineerProfile.objects.get(userprofile_id = client_export.engineer.id)
+            engineer_for_pdf = EngineerProfile.objects.get(pk = client_export.engineer_id)
             print(engineer_for_pdf.phone_number)
         except Exception as e: 
             print(e)

@@ -41,7 +41,7 @@ Results : {{ client_name }}
                             <td>{{ i.name }}</td>
                             <td>{{ i.status }}</td>
                             <td><a href="{% url 'edit_report' i.id %}"> Edit</a</td>
-                            <td><a href="{% url 'pdfexport' i.engineer.id %}"> Download Full Service Report</a</td>
+                            <td><a href="{% url 'pdfexport' i.id%}"> Download Full Service Report</a</td>
 
                         </tr>
                     {% endfor %}
